@@ -1,0 +1,7 @@
+.list{
+    display: flex;
+    flex-direction: column;
+}
+.item_wrapper{
+    margin-top: 30px;
+}
