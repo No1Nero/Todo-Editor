@@ -5,10 +5,11 @@ import { ITodo } from "./models/ITodo";
 import { useDispatch } from "react-redux";
 import { TodoActionTypes } from "./store/types";
 import TodoList from "./components/TodoList/TodoList";
-import { useTypedSelector } from "./store/useTypedSelector";
+import Modal from "./components/Modal/Modal";
 
 export default function App() {
   const [createInputText, setCreateInputText] = useState<string>('');
+  const [isShownModal, setIsShownModal] = useState<boolean>(false);
   const dispatch = useDispatch();
 
   const addTodo = (todo: ITodo) => {
@@ -16,11 +17,16 @@ export default function App() {
     setCreateInputText('');
   };
 
+  const handleInputText = (e: React.FormEvent<HTMLInputElement>) => {
+    setCreateInputText(e.currentTarget.value.replace(/[{}+/@#$%^&*|;:<>=_]/g, ''));
+};
+
   return (
     <div>
+      {isShownModal && <Modal onSetIsShownModal={setIsShownModal} createInputText={createInputText} onHandleInputText={handleInputText} onAddTodo={addTodo} />}
       <header className={styles.header}>Todo Editor</header>
       <div className={styles.container}>
-        <CreateInput createInputText={createInputText} onSetCreateInputText={setCreateInputText} onAddTodo={addTodo} />
+        <CreateInput createInputText={createInputText} onHandleInputText={handleInputText} onAddTodo={addTodo} onSetIsShownModal={setIsShownModal} />
         <TodoList />
       </div>
     </div>

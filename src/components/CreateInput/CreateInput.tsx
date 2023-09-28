@@ -1,17 +1,15 @@
 import { Dispatch, SetStateAction } from "react";
 import styles from './CreateInput.module.css';
+import {BsPlusLg} from 'react-icons/bs';
 
 interface CreateInputProps {
     createInputText: string,
-    onSetCreateInputText: Dispatch<SetStateAction<string>>,
+    onHandleInputText: any,
     onAddTodo: any,
+    onSetIsShownModal: Dispatch<SetStateAction<boolean>>
 };
 
-export default function CreateInput({createInputText, onSetCreateInputText, onAddTodo}: CreateInputProps) {
-
-    const handleInputText = (e: React.FormEvent<HTMLInputElement>) => {
-        onSetCreateInputText(e.currentTarget.value);
-      };
+export default function CreateInput({createInputText, onHandleInputText, onAddTodo, onSetIsShownModal}: CreateInputProps) {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -28,7 +26,10 @@ export default function CreateInput({createInputText, onSetCreateInputText, onAd
     return (
         <form className={styles.form} onSubmit={handleSubmit}>
             <h2 className={styles.title}>Create Todo</h2>
-            <input className={styles.input} value={createInputText} onChange={handleInputText} placeholder="Enter title to create" />
+            <div className={styles.input_wrapper}>
+                <input type="text" className={styles.input} value={createInputText} onChange={onHandleInputText} placeholder="Enter title to create" />
+                <button onClick={()=> onSetIsShownModal(isShownModal => !isShownModal)} type="button" className={styles.button}><BsPlusLg size={40}/></button>
+            </div>
         </form>
     );
 };
