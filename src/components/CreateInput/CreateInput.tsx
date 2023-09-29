@@ -6,21 +6,24 @@ interface CreateInputProps {
     createInputText: string,
     onHandleInputText: any,
     onAddTodo: any,
-    onSetIsShownModal: Dispatch<SetStateAction<boolean>>
+    onSetIsShownModal: Dispatch<SetStateAction<boolean>>,
+    onFormatDate: any
 };
 
-export default function CreateInput({createInputText, onHandleInputText, onAddTodo, onSetIsShownModal}: CreateInputProps) {
+export default function CreateInput({createInputText, onHandleInputText, onAddTodo, onSetIsShownModal, onFormatDate}: CreateInputProps) {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const obj = {
-            id: Math.random().toString(36).substr(2, 9),
-            title: createInputText,
-            status: false,
-            creationDate: new Date().toLocaleString(),
-            expirationDate: new Date(Date.now() + 1000*60*60*24).toLocaleString(),
-        };
-        onAddTodo(obj);
+        if (createInputText.trim()) {
+            const obj = {
+                id: Math.random().toString(36).substr(2, 9),
+                title: createInputText,
+                status: false,
+                creationDate: onFormatDate(new Date()),
+                expirationDate: onFormatDate(new Date(Date.now() + 1000*60*60*24)),
+            };
+            onAddTodo(obj);
+        }
     };
 
     return (

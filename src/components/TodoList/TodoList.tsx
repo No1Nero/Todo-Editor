@@ -6,12 +6,12 @@ export default function TodoList() {
     const todos = useTypedSelector(state => state.todo.todos);
     
     return (
-        <div className={styles.list}>
+        <ul className={styles.list}>
             {todos.map(item => (
-                <div className={styles.item_wrapper} key={item.id}>
+                <li className={styles.item_wrapper} key={item.id}>
                     <TodoItem item={item} />
-                </div>
+                </li>
             ))}
-        </div>
+        </ul>
     );
 };

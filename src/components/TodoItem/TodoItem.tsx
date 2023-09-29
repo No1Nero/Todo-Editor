@@ -10,7 +10,6 @@ export default function TodoItem({item}: TodoItemProps) {
 
     return (
         <div className={styles.container}>
-            <div className={styles.decor}></div>
             <div className={styles.content_wrapper}>
                 <h1 className={styles.title}>{title}</h1>
                 <p className={styles.date}>Created: {creationDate}</p>

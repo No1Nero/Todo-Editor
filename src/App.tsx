@@ -18,15 +18,35 @@ export default function App() {
   };
 
   const handleInputText = (e: React.FormEvent<HTMLInputElement>) => {
-    setCreateInputText(e.currentTarget.value.replace(/[{}+/@#$%^&*|;:<>=_]/g, ''));
-};
+    const formattedInputText = e.currentTarget.value.replace(/[{}+/@#$%^&*|;:<>=_]/g, '');
+    if (formattedInputText.length > 70) {
+      formattedInputText.slice(0, 70);
+    } else {
+      setCreateInputText(formattedInputText);
+    }
+  };
+
+  const formatDate = (date: any) => {
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+
+    day = (day < 10) ? '0' + day : day;
+    month = (month < 10) ? '0' + month : month;
+    hours = (hours < 10) ? '0' + hours : hours;
+    minutes = (minutes < 10) ? '0' + minutes : minutes;
+
+    return day + '.' + month + '.' + year + ' ' + hours + ':' + minutes;
+  };
 
   return (
-    <div>
-      {isShownModal && <Modal onSetIsShownModal={setIsShownModal} createInputText={createInputText} onHandleInputText={handleInputText} onAddTodo={addTodo} />}
+    <div style={isShownModal ? {overflowY: 'hidden'} : {overflowY: 'visible'}}>
+      {isShownModal && <Modal onSetCreateInputText={setCreateInputText} onFormatDate={formatDate} onSetIsShownModal={setIsShownModal} createInputText={createInputText} onHandleInputText={handleInputText} onAddTodo={addTodo} />}
       <header className={styles.header}>Todo Editor</header>
       <div className={styles.container}>
-        <CreateInput createInputText={createInputText} onHandleInputText={handleInputText} onAddTodo={addTodo} onSetIsShownModal={setIsShownModal} />
+        <CreateInput onFormatDate={formatDate} createInputText={createInputText} onHandleInputText={handleInputText} onAddTodo={addTodo} onSetIsShownModal={setIsShownModal} />
         <TodoList />
       </div>
     </div>

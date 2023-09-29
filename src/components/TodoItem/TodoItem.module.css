@@ -1,17 +1,13 @@
 .container{
-    width: 450px;
-    height: 180px;
+    width: 480px;
+    height: 240px;
     border: 1px solid #000;
+    border-left: 20px solid rgb(87, 87, 255);
     border-radius: 7px;
     background-color: #fff;
     font-size: 18px;
     display: flex;
-}
-.decor{
-    height: 100%;
-    width: 20px;
-    background-color: rgb(87, 87, 255);
-    border-radius: 6px 0 0 6px;
+    overflow-x: hidden;
 }
 .content_wrapper{
     display: flex;
@@ -25,4 +21,12 @@
 }
 .date{
     color: #464545;
+    margin: 0 0 10px 0;
+}
+@media (max-width: 768px) {
+    .container{
+        width: 300px;
+        height: 120px;
+        border-left: 10px solid rgb(87, 87, 255);
+    }
 }

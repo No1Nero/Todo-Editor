@@ -7,7 +7,7 @@ const initialState: initialStateType = {
 export const todoReducer = (state = initialState, action: TodoAction) => {
     switch (action.type) {
         case TodoActionTypes.CREATE_TODO:
-            return {todos: [...state.todos, action.payload]};
+            return {todos: [action.payload, ...state.todos]};
 
         default: return initialState;
     };
