@@ -42,7 +42,7 @@ export default function App() {
   };
 
   return (
-    <div style={isShownModal ? {overflowY: 'hidden'} : {overflowY: 'visible'}}>
+    <div style={isShownModal ? {overflowY: 'hidden', overflowX: 'hidden', height: '100vh'} : {overflowY: 'visible'}}>
       {isShownModal && <Modal onSetCreateInputText={setCreateInputText} onFormatDate={formatDate} onSetIsShownModal={setIsShownModal} createInputText={createInputText} onHandleInputText={handleInputText} onAddTodo={addTodo} />}
       <header className={styles.header}>Todo Editor</header>
       <div className={styles.container}>
