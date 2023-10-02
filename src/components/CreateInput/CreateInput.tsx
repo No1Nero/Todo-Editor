@@ -1,29 +1,36 @@
-import { Dispatch, SetStateAction } from "react";
 import styles from './CreateInput.module.css';
-import {BsPlusLg} from 'react-icons/bs';
+import { BsPlusLg } from 'react-icons/bs';
+import { ITodo } from "../../models/ITodo";
+import { Dispatch, SetStateAction } from 'react';
+import { formatDate } from '../../utils/formatDate';
+import uuid from 'react-uuid';
 
 interface CreateInputProps {
     createInputText: string,
-    onHandleInputText: any,
-    onAddTodo: any,
+    onHandleInputText: (e: React.FormEvent<HTMLInputElement>) => void,
+    onAddTodo: (todo: ITodo) => void,
     onSetIsShownModal: Dispatch<SetStateAction<boolean>>,
-    onFormatDate: any
 };
 
-export default function CreateInput({createInputText, onHandleInputText, onAddTodo, onSetIsShownModal, onFormatDate}: CreateInputProps) {
+export default function CreateInput({createInputText, onHandleInputText, onAddTodo, onSetIsShownModal}: CreateInputProps) {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (createInputText.trim()) {
+            const tomorrowExpirationDate = Date.now() + 1000*60*60*24;
             const obj = {
-                id: Math.random().toString(36).substr(2, 9),
+                id: uuid(),
                 title: createInputText,
                 status: false,
-                creationDate: onFormatDate(new Date()),
-                expirationDate: onFormatDate(new Date(Date.now() + 1000*60*60*24)),
+                creationDate: formatDate(new Date()),
+                expirationDate: formatDate(new Date(tomorrowExpirationDate)),
             };
             onAddTodo(obj);
         }
+    };
+
+    const openModal = () => {
+        onSetIsShownModal(setIsShownModal => !setIsShownModal);
     };
 
     return (
@@ -31,7 +38,7 @@ export default function CreateInput({createInputText, onHandleInputText, onAddTo
             <h2 className={styles.title}>Create Todo</h2>
             <div className={styles.input_wrapper}>
                 <input type="text" className={styles.input} value={createInputText} onChange={onHandleInputText} placeholder="Enter title to create" />
-                <button onClick={()=> onSetIsShownModal(isShownModal => !isShownModal)} type="button" className={styles.button}><BsPlusLg size={40}/></button>
+                <button onClick={openModal} type="button" className={styles.button}><BsPlusLg size={40}/></button>
             </div>
         </form>
     );

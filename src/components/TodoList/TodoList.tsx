@@ -8,7 +8,7 @@ export default function TodoList() {
     return (
         <ul className={styles.list}>
             {todos.map(item => (
-                <li className={styles.item_wrapper} key={item.id}>
+                <li key={item.id}>
                     <TodoItem item={item} />
                 </li>
             ))}

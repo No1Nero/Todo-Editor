@@ -19,34 +19,20 @@ export default function App() {
 
   const handleInputText = (e: React.FormEvent<HTMLInputElement>) => {
     const formattedInputText = e.currentTarget.value.replace(/[{}+/@#$%^&*|;:<>=_]/g, '');
-    if (formattedInputText.length > 70) {
-      formattedInputText.slice(0, 70);
+    const maxInputLength = 70;
+    if (formattedInputText.length > maxInputLength) {
+      formattedInputText.slice(0, maxInputLength);
     } else {
       setCreateInputText(formattedInputText);
     }
   };
 
-  const formatDate = (date: any) => {
-    var day = date.getDate();
-    var month = date.getMonth() + 1;
-    var year = date.getFullYear();
-    var hours = date.getHours();
-    var minutes = date.getMinutes();
-
-    day = (day < 10) ? '0' + day : day;
-    month = (month < 10) ? '0' + month : month;
-    hours = (hours < 10) ? '0' + hours : hours;
-    minutes = (minutes < 10) ? '0' + minutes : minutes;
-
-    return day + '.' + month + '.' + year + ' ' + hours + ':' + minutes;
-  };
-
   return (
-    <div style={isShownModal ? {overflowY: 'hidden', overflowX: 'hidden', height: '100vh'} : {overflowY: 'visible'}}>
-      {isShownModal && <Modal onSetCreateInputText={setCreateInputText} onFormatDate={formatDate} onSetIsShownModal={setIsShownModal} createInputText={createInputText} onHandleInputText={handleInputText} onAddTodo={addTodo} />}
+    <div className={isShownModal ? styles.modal_opened : styles.modal_closed}>
+      {isShownModal && <Modal onSetCreateInputText={setCreateInputText} onSetIsShownModal={setIsShownModal} createInputText={createInputText} onHandleInputText={handleInputText} onAddTodo={addTodo} />}
       <header className={styles.header}>Todo Editor</header>
       <div className={styles.container}>
-        <CreateInput onFormatDate={formatDate} createInputText={createInputText} onHandleInputText={handleInputText} onAddTodo={addTodo} onSetIsShownModal={setIsShownModal} />
+        <CreateInput onSetIsShownModal={setIsShownModal} createInputText={createInputText} onHandleInputText={handleInputText} onAddTodo={addTodo} />
         <TodoList />
       </div>
     </div>
