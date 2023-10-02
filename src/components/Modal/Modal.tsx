@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction, useState } from 'react';
 import styles from './Modal.module.css';
 import { ITodo } from '../../models/ITodo';
 import { formatDate } from '../../utils/formatDate';
+import { formatISODate } from '../../utils/formatISODate';
 import uuid from 'react-uuid';
 
 interface ModalProps {
@@ -15,7 +16,6 @@ interface ModalProps {
 export default function Modal({createInputText, onHandleInputText, onAddTodo, onSetIsShownModal, onSetCreateInputText}: ModalProps) {
     const [created] = useState<string>(formatDate(new Date()));
     const [expires, setExpires] = useState<string>('');
-    const todayMinDate = new Date().toISOString().slice(0, 16);
 
     const handleExpires = (e: React.FormEvent<HTMLInputElement>) => {
         const expDate = new Date(e.currentTarget.value);
@@ -62,7 +62,7 @@ export default function Modal({createInputText, onHandleInputText, onAddTodo, on
                     </div>
                     <div className={styles.singe_input}>
                         <p className={styles.input_name_req}>Expires</p>
-                        <input value={expires} min={todayMinDate} onChange={handleExpires} className={styles.input_field} type='datetime-local' />
+                        <input value={expires} min={formatISODate(new Date())} onChange={handleExpires} className={styles.input_field} type='datetime-local' />
                     </div>
                 </div>
                 <div className={styles.button_container}>

@@ -1,14 +1,14 @@
-export const formatDate = (date: any ) => {
+export const formatDate = (date: Date ) => {
     var day = date.getDate();
     var month = date.getMonth() + 1;
     var year = date.getFullYear();
     var hours = date.getHours();
     var minutes = date.getMinutes();
 
-    day = (day < 10) ? '0' + day : day;
-    month = (month < 10) ? '0' + month : month;
-    hours = (hours < 10) ? '0' + hours : hours;
-    minutes = (minutes < 10) ? '0' + minutes : minutes;
+    const FormattedDay = (day < 10) ? '0' + day : day;
+    const FormattedMonth = (month < 10) ? '0' + month : month;
+    const FormattedHours = (hours < 10) ? '0' + hours : hours;
+    const FormattedMinutes = (minutes < 10) ? '0' + minutes : minutes;
 
-    return day + '.' + month + '.' + year + ' ' + hours + ':' + minutes;
+    return FormattedDay + '.' + FormattedMonth + '.' + year + ' ' + FormattedHours + ':' + FormattedMinutes;
   };
