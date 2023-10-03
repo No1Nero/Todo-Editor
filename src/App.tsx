@@ -17,22 +17,16 @@ export default function App() {
     setCreateInputText('');
   };
 
-  const handleInputText = (e: React.FormEvent<HTMLInputElement>) => {
-    const formattedInputText = e.currentTarget.value.replace(/[{}+/@#$%^&*|;:<>=_]/g, '');
-    const maxInputLength = 70;
-    if (formattedInputText.length > maxInputLength) {
-      formattedInputText.slice(0, maxInputLength);
-    } else {
-      setCreateInputText(formattedInputText);
-    }
+  const handleModal = () => {
+    setIsShownModal(isShownModal => !isShownModal);
   };
 
   return (
     <div className={isShownModal ? styles.modal_opened : styles.modal_closed}>
-      {isShownModal && <Modal onSetCreateInputText={setCreateInputText} onSetIsShownModal={setIsShownModal} createInputText={createInputText} onHandleInputText={handleInputText} onAddTodo={addTodo} />}
+      {isShownModal && <Modal onSetCreateInputText={setCreateInputText} onHandleModal={handleModal} createInputText={createInputText} onAddTodo={addTodo} />}
       <header className={styles.header}>Todo Editor</header>
       <div className={styles.container}>
-        <CreateInput onSetIsShownModal={setIsShownModal} createInputText={createInputText} onHandleInputText={handleInputText} onAddTodo={addTodo} />
+        <CreateInput onHandleModal={handleModal} createInputText={createInputText} onSetCreateInputText={setCreateInputText} onAddTodo={addTodo} />
         <TodoList />
       </div>
     </div>
