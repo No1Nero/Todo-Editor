@@ -15,11 +15,25 @@
     padding: 10px 20px 10px 10px;
     width: 100%;
 }
+.header_wrapper{
+    display: flex;
+    align-items: center;
+    margin: 5px 0 10px 5px;
+}
+.checkbox{
+    min-width: 25px;
+    min-height: 25px;
+    border: 1px solid #000;
+    margin-right: 10px;
+    color: #000;
+}
 .title{
     font-size: 24px;
     font-weight: 600;
-    margin: 10px 0 20px 0;
     overflow-x: hidden;
+}
+.checked_title{
+    text-decoration: line-through;
 }
 .date{
     color: #464545;
@@ -33,5 +47,11 @@
     }
     .content_wrapper{
         padding: 0 20px 0 10px;
+    }
+    .header_wrapper{
+        margin: 5px 0 0 5px;;
+    }
+    .date{
+        margin: 0 0 5px 0;
     }
 }
