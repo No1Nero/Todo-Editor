@@ -7,6 +7,7 @@ export interface initialStateType {
 export enum TodoActionTypes {
     CREATE_TODO = 'CREATE_TODO',
     CHANGE_STATUS = 'CHANGE_STATUS',
+    DELETE_TODO = 'DELETE_TODO',
 };
 
 interface createTodoAction {
@@ -19,4 +20,9 @@ interface changeTodoStatusAction {
     payload: string,
 };
 
-export type TodoAction = createTodoAction | changeTodoStatusAction;
+interface deleteTodoAction {
+    type: TodoActionTypes.DELETE_TODO,
+    payload: string,
+};
+
+export type TodoAction = createTodoAction | changeTodoStatusAction | deleteTodoAction;
