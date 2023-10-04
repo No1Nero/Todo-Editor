@@ -2,7 +2,6 @@ import styles from './CreateInput.module.css';
 import { BsPlusLg } from 'react-icons/bs';
 import { ITodo } from "../../models/ITodo";
 import { Dispatch, SetStateAction } from 'react';
-import { formatDate } from '../../utils/formatDate';
 import { formatInputText } from '../../utils/formatInputText';
 import uuid from 'react-uuid';
 
@@ -14,6 +13,7 @@ interface CreateInputProps {
 };
 
 export default function CreateInput({createInputText, onAddTodo, onSetCreateInputText, onHandleModal}: CreateInputProps) {
+    const maxInputLength = 70;
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -23,8 +23,8 @@ export default function CreateInput({createInputText, onAddTodo, onSetCreateInpu
                 id: uuid(),
                 title: createInputText,
                 status: false,
-                creationDate: formatDate(new Date()),
-                expirationDate: formatDate(new Date(tomorrowExpirationDate)),
+                creationDate: new Date().toISOString(),
+                expirationDate: new Date(tomorrowExpirationDate).toISOString(),
             };
             onAddTodo(obj);
         }
@@ -38,7 +38,7 @@ export default function CreateInput({createInputText, onAddTodo, onSetCreateInpu
         <form className={styles.form} onSubmit={handleSubmit}>
             <h2 className={styles.title}>Create Todo</h2>
             <div className={styles.input_wrapper}>
-                <input type="text" className={styles.input} value={createInputText} onChange={handleInputText} placeholder="Enter title to create" />
+                <input type="text" className={styles.input} value={createInputText} maxLength={maxInputLength} onChange={handleInputText} placeholder="Enter title to create" />
                 <button onClick={onHandleModal} type="button" className={styles.button}><BsPlusLg size={40}/></button>
             </div>
         </form>

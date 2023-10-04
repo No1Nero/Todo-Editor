@@ -1,3 +1,4 @@
-export const formatISODate = (date: Date) => {
-    return date.toISOString().slice(0, 16);
+export const formatISODate = (date: string) => {
+    const datetimeLength = 16;
+    return date.slice(0, datetimeLength);
 };
