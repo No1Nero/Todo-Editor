@@ -4,6 +4,7 @@ import { ITodo } from "../../models/ITodo";
 import { Dispatch, SetStateAction } from 'react';
 import { formatInputText } from '../../utils/formatInputText';
 import uuid from 'react-uuid';
+import { addOneDay } from '../../utils/timeUtils';
 
 interface CreateInputProps {
     createInputText: string,
@@ -18,13 +19,12 @@ export default function CreateInput({createInputText, onAddTodo, onSetCreateInpu
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (createInputText.trim()) {
-            const tomorrowExpirationDate = Date.now() + 1000*60*60*24;
             const obj = {
                 id: uuid(),
                 title: createInputText,
                 status: false,
                 creationDate: new Date().toISOString(),
-                expirationDate: new Date(tomorrowExpirationDate).toISOString(),
+                expirationDate: addOneDay(new Date()).toISOString(),
             };
             onAddTodo(obj);
         }

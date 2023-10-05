@@ -7,10 +7,9 @@ import uuid from 'react-uuid';
 import { useDispatch } from 'react-redux';
 import { TodoActionTypes } from '../../store/types';
 import { validateSaveButton } from '../../utils/validateSaveButton';
-import DateTimePicker from 'react-datetime-picker';
-import 'react-datetime-picker/dist/DateTimePicker.css';
-import 'react-calendar/dist/Calendar.css';
-import 'react-clock/dist/Clock.css';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+import { getMaxDate, getMinDate } from '../../utils/timeFormats';
 
 interface ModalProps {
     createInputText?: string,
@@ -95,7 +94,17 @@ export default function Modal({createInputText, onAddTodo, onSetCreateInputText,
                     </div>
                     <div className={styles.singe_input}>
                         <p className={styles.input_name_req}>Expires</p>
-                        <DateTimePicker value={expires} onChange={setExpires} minDate={new Date()} format='dd.MM.y HH:mm' required className={styles.input_field_expires} />
+                        <DatePicker 
+                            selected={expires} 
+                            onChange={(date) => setExpires(date)} 
+                            dateFormat='dd.MM.yyyy HH:mm' 
+                            minDate={new Date()} 
+                            showTimeSelect 
+                            timeFormat='HH:mm' 
+                            timeIntervals={5} 
+                            minTime={getMinDate(expires)} 
+                            maxTime={getMaxDate(new Date())}
+                        />
                     </div>
                 </div>
                 <div className={styles.button_container}>
