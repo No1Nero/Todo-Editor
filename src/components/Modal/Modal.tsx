@@ -2,13 +2,15 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import styles from './Modal.module.css';
 import { ITodo } from '../../models/ITodo';
 import { formatDateFromISO } from '../../utils/formatDateFromISO';
-import { formatISODate } from '../../utils/formatISODate';
 import { formatInputText } from '../../utils/formatInputText';
 import uuid from 'react-uuid';
 import { useDispatch } from 'react-redux';
 import { TodoActionTypes } from '../../store/types';
-import { getLocalTimeFromISO } from '../../utils/getLocalTimeFromISO';
 import { validateSaveButton } from '../../utils/validateSaveButton';
+import DateTimePicker from 'react-datetime-picker';
+import 'react-datetime-picker/dist/DateTimePicker.css';
+import 'react-calendar/dist/Calendar.css';
+import 'react-clock/dist/Clock.css';
 
 interface ModalProps {
     createInputText?: string,
@@ -21,8 +23,7 @@ interface ModalProps {
 export default function Modal({createInputText, onAddTodo, onSetCreateInputText, item, onHandleModal}: ModalProps) {
     const [editTitle, setEditTitle] = useState<string>('');
     const [created, setCreated] = useState<string>('');
-    const [expires, setExpires] = useState<string>('');
-    const todayISODate = formatISODate(new Date().toISOString());
+    const [expires, setExpires] = useState<Date | null>(null);
     const maxInputLength = 70;
     const dispatch = useDispatch();
 
@@ -30,21 +31,11 @@ export default function Modal({createInputText, onAddTodo, onSetCreateInputText,
         if (item) {
             setEditTitle(item.title);
             setCreated(new Date(item.creationDate).toISOString());
-            setExpires(formatISODate(getLocalTimeFromISO(new Date(item.expirationDate))));
+            setExpires(new Date(item.expirationDate));
         } else {
             setCreated(new Date().toISOString());
         }
     }, [item]);
-
-    const handleExpires = (e: React.FormEvent<HTMLInputElement>) => {
-        const expDate = new Date(e.currentTarget.value);
-        const curDate = new Date();
-        if (expDate < curDate) {
-            setExpires('');
-        } else {
-            setExpires(e.currentTarget.value);
-        }
-    };
 
     const handleInputText = (e: React.FormEvent<HTMLInputElement>) => {
         const formattedInput = formatInputText(e.currentTarget.value);
@@ -70,7 +61,7 @@ export default function Modal({createInputText, onAddTodo, onSetCreateInputText,
                 title: editTitle,
                 status: status,
                 creationDate: new Date(creationDate).toISOString(),
-                expirationDate: new Date(expires).toISOString(),
+                expirationDate: new Date(expires!).toISOString(),
             };
             dispatch({type: TodoActionTypes.EDIT_TODO, payload: editedTodo});
         } else {
@@ -79,7 +70,7 @@ export default function Modal({createInputText, onAddTodo, onSetCreateInputText,
                 title: createInputText!,
                 status: false,
                 creationDate: new Date (created).toISOString(),
-                expirationDate: new Date(expires).toISOString(),
+                expirationDate: new Date(expires!).toISOString(),
             };
             onAddTodo!(createdTodo);
         }
@@ -104,7 +95,7 @@ export default function Modal({createInputText, onAddTodo, onSetCreateInputText,
                     </div>
                     <div className={styles.singe_input}>
                         <p className={styles.input_name_req}>Expires</p>
-                        <input value={expires} min={todayISODate} onChange={handleExpires} className={styles.input_field} type='datetime-local' />
+                        <DateTimePicker value={expires} onChange={setExpires} minDate={new Date()} format='dd.MM.y HH:mm' required className={styles.input_field_expires} />
                     </div>
                 </div>
                 <div className={styles.button_container}>

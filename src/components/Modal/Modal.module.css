@@ -58,7 +58,12 @@
     border-radius: 4px;
     border: 1px solid #000;
     padding: 2px 5px;
-    font-size: 16px;
+    font-size: 18px;
+}
+.input_field_expires{
+    width: 260px;
+    height: 33px;
+    font-size: 18px;
 }
 .button_container{
     display: flex;
