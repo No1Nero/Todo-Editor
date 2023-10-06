@@ -9,3 +9,6 @@ ul{
     margin-left: 0;
     padding-left: 0;
 }
+html {
+    margin-right: calc(-1 * (100vw - 100%));
+}

@@ -1,0 +1,55 @@
+.filter_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.filter_button{
+    width: 25%;
+    font-size: 22px;
+    background-color: #fff;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 0.5px solid #000;
+    cursor: pointer;
+}
+.filter_button:first-child{
+    border-left: none;
+    border-right: 0.5px solid #000;
+}
+.filter_button:last-child{
+    border-right: none;
+    border-left: 0.5px solid #000;
+}
+.filter_button:hover{
+    color: rgb(87, 87, 255);
+}
+.chosen_filter{
+    background-color: rgb(192, 192, 192);
+    color: rgb(87, 87, 255);
+}
+.delete_container{
+    display: flex;
+    justify-content: flex-end;
+}
+.delete_button{
+    width: 180px;
+    height: 40px;
+    border: 1px solid #000;
+    color: red;
+    font-size: 22px;
+    padding: 3px 5px;
+    background-color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.delete_button:active{
+    border: 1px solid red;
+}
+@media (max-width: 768px) {
+    .filter_button{
+        width: 120px;
+    }
+}
+

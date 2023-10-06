@@ -1,12 +1,17 @@
-import { useTypedSelector } from '../../store/useTypedSelector';
 import TodoItem from '../TodoItem/TodoItem';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import styles from './TodoList.module.css';
+import { ITodo } from '../../models/ITodo';
 
-export default function TodoList() {
-    const todos = useTypedSelector(state => state.todo.todos);
-    
+interface TodoListProps {
+    todos: ITodo[],
+};
+export default function TodoList({todos}: TodoListProps) {
+
     return (
+        <>
+        {todos.length
+        ?
         <TransitionGroup component='ul' className={styles.list} >
         {todos.map(item => (
             <CSSTransition key={item.id} timeout={300} 
@@ -22,5 +27,9 @@ export default function TodoList() {
             </CSSTransition>
         ))}
         </TransitionGroup>
+        : 
+        <div className={styles.empty_message}>{'Oops, nothing here :('}</div>
+        }
+        </>
     );
 };

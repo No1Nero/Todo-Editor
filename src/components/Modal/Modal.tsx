@@ -5,11 +5,13 @@ import { formatDateFromISO } from '../../utils/formatDateFromISO';
 import { formatInputText } from '../../utils/formatInputText';
 import uuid from 'react-uuid';
 import { useDispatch } from 'react-redux';
-import { TodoActionTypes } from '../../store/types';
+import { TodoActionTypes } from '../../store/todoTypes';
 import { validateSaveButton } from '../../utils/validateSaveButton';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { getMaxDate, getMinDate } from '../../utils/timeFormats';
+import { useTypedSelector } from '../../store/useTypedSelector';
+import { StatusFilterConstants } from '../../constants/statusFilterConstants';
 
 interface ModalProps {
     createInputText?: string,
@@ -17,12 +19,14 @@ interface ModalProps {
     onSetCreateInputText?: Dispatch<SetStateAction<string>>,
     item?: ITodo,
     onHandleModal: () => void,
+    filteredTodos?: ITodo[],
 };
 
-export default function Modal({createInputText, onAddTodo, onSetCreateInputText, item, onHandleModal}: ModalProps) {
+export default function Modal({createInputText, onAddTodo, onSetCreateInputText, item, onHandleModal, filteredTodos}: ModalProps) {
     const [editTitle, setEditTitle] = useState<string>('');
     const [created, setCreated] = useState<string>('');
     const [expires, setExpires] = useState<Date | null>(null);
+    const {statusFilter} = useTypedSelector(state => state.todo);
     const maxInputLength = 70;
     const dispatch = useDispatch();
 
@@ -72,6 +76,9 @@ export default function Modal({createInputText, onAddTodo, onSetCreateInputText,
                 expirationDate: new Date(expires!).toISOString(),
             };
             onAddTodo!(createdTodo);
+            if (statusFilter === StatusFilterConstants.COMPLETED && !filteredTodos?.length) {
+                dispatch({type: TodoActionTypes.CHANGE_FILTER, payload: StatusFilterConstants.ALL});
+            }
         }
         closeModal();
     };
