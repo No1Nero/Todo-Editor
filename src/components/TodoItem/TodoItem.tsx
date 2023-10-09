@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { TodoActionTypes } from '../../store/todoTypes';
 import { BsTrash } from 'react-icons/bs';
 import { BsPencil } from 'react-icons/bs';
-import styles from './TodoItem.module.css';
+import './TodoItem.scss';
 import classNames from 'classnames';
 import { useState } from 'react';
 import Modal from '../Modal/Modal';
@@ -31,20 +31,20 @@ export default function TodoItem({item}: TodoItemProps) {
     };
 
     return (
-        <div className={styles.container}>
+        <div className='todo_item_container'>
             {isShownModal && <Modal onHandleModal={handleModal} item={item}/>}
-            <div className={styles.content_wrapper}>
-                <div className={styles.header_wrapper}>
-                    <input className={styles.checkbox} type="checkbox" checked={status} onChange={handleStatusChange}/>
-                    <h1 className={status ? classNames(styles.title, styles.checked_title ) : styles.title}>{title}</h1>
+            <div className='todo_item_content_wrapper'>
+                <div className='todo_item_header_wrapper'>
+                    <input className='todo_item_checkbox' type="checkbox" checked={status} onChange={handleStatusChange}/>
+                    <h1 className={status ? classNames('todo_item_title', 'todo_item_checked_title') : 'todo_item_title'}>{title}</h1>
                 </div>
-                <div className={styles.date_container}>
-                    <p className={styles.date}>Created: {formatDateFromISO(creationDate)}</p>
-                    <p className={styles.date}>Expires: {formatDateFromISO(expirationDate)}</p>
+                <div className='todo_item_date_container'>
+                    <p className='todo_item_date'>Created: {formatDateFromISO(creationDate)}</p>
+                    <p className='todo_item_date'>Expires: {formatDateFromISO(expirationDate)}</p>
                 </div>
-                <div className={styles.button_container}>
-                    <button onClick={handleModal} disabled={status} className={styles.edit_button}><BsPencil size={35} color='rgb(87, 87, 255)' /></button>
-                    <button onClick={deleteTodo} className={styles.delete_button} type='button'><BsTrash size={35} color='red' /></button>
+                <div className='todo_item_button_container'>
+                    <button onClick={handleModal} disabled={status} className='todo_item_edit_button'><BsPencil size={35} color='rgb(87, 87, 255)' /></button>
+                    <button onClick={deleteTodo} className='todo_item_delete_button' type='button'><BsTrash size={35} color='red' /></button>
                 </div>
             </div>
         </div>
