@@ -1,7 +1,8 @@
 import { ITodo } from "../models/ITodo";
 
 export interface initialStateType {
-    todos: ITodo[]
+    todos: ITodo[],
+    statusFilter: string,
 };
 
 export enum TodoActionTypes {
@@ -9,6 +10,8 @@ export enum TodoActionTypes {
     CHANGE_STATUS = 'CHANGE_STATUS',
     DELETE_TODO = 'DELETE_TODO',
     EDIT_TODO = 'EDIT_TODO',
+    CHANGE_FILTER = 'CHANGE_FILTER',
+    CLEAR_COMPLETED = 'CLEAR_COMPLETED',
 };
 
 interface createTodoAction {
@@ -31,4 +34,13 @@ interface editTodoAction {
     payload: ITodo,
 };
 
-export type TodoAction = createTodoAction | changeTodoStatusAction | deleteTodoAction | editTodoAction;
+interface changeFilterAction {
+    type: TodoActionTypes.CHANGE_FILTER,
+    payload: string,
+};
+
+interface clearCompletedAction {
+    type: TodoActionTypes.CLEAR_COMPLETED,
+};
+
+export type TodoAction = createTodoAction | changeTodoStatusAction | deleteTodoAction | editTodoAction | changeFilterAction | clearCompletedAction;

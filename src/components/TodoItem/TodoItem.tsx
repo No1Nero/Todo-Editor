@@ -1,6 +1,6 @@
 import { ITodo } from '../../models/ITodo';
 import { useDispatch } from 'react-redux';
-import { TodoActionTypes } from '../../store/types';
+import { TodoActionTypes } from '../../store/todoTypes';
 import { BsTrash } from 'react-icons/bs';
 import { BsPencil } from 'react-icons/bs';
 import styles from './TodoItem.module.css';

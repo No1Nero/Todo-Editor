@@ -21,6 +21,14 @@
     transform: scale(0);
     transition: all 300ms;
 }
+.empty_message{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: grey;
+    margin-top: 30px;
+}
 @media (max-width: 768px) {
     .list{
         display: flex;

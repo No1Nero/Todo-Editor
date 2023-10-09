@@ -5,15 +5,22 @@ import { Dispatch, SetStateAction } from 'react';
 import { formatInputText } from '../../utils/formatInputText';
 import uuid from 'react-uuid';
 import { addOneDay } from '../../utils/timeUtils';
+import { useTypedSelector } from '../../store/useTypedSelector';
+import { StatusFilterConstants } from '../../constants/statusFilterConstants';
+import { useDispatch } from 'react-redux';
+import { TodoActionTypes } from '../../store/todoTypes';
 
 interface CreateInputProps {
     createInputText: string,
     onAddTodo: (todo: ITodo) => void,
     onSetCreateInputText: Dispatch<SetStateAction<string>>,
     onHandleModal: () => void,
+    filteredTodos: ITodo[],
 };
 
-export default function CreateInput({createInputText, onAddTodo, onSetCreateInputText, onHandleModal}: CreateInputProps) {
+export default function CreateInput({createInputText, onAddTodo, onSetCreateInputText, onHandleModal, filteredTodos}: CreateInputProps) {
+    const {statusFilter} = useTypedSelector(state => state.todo);
+    const dispatch = useDispatch();
     const maxInputLength = 70;
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -27,6 +34,9 @@ export default function CreateInput({createInputText, onAddTodo, onSetCreateInpu
                 expirationDate: addOneDay(new Date()).toISOString(),
             };
             onAddTodo(obj);
+            if (statusFilter === StatusFilterConstants.COMPLETED && !filteredTodos.length) {
+                dispatch({type: TodoActionTypes.CHANGE_FILTER, payload: StatusFilterConstants.ALL});
+            }
         }
     };
 
