@@ -8,26 +8,17 @@ import TodoList from "./components/TodoList/TodoList";
 import Modal from "./components/Modal/Modal";
 import FilterMenu from "./components/FilterMenu/FilterMenu";
 import { useTypedSelector } from "./store/useTypedSelector";
-import { StatusFilterConstants } from "./constants/statusFilterConstants";
+import { filterTodos } from "./utils/filterTodos";
 
 export default function App() {
-  const {statusFilter} = useTypedSelector(state => state.todo);
-  const {todos} = useTypedSelector(state => state.todo);
+  const {todos, statusFilter} = useTypedSelector(state => state.todo);
   const [createInputText, setCreateInputText] = useState<string>('');
   const [isShownModal, setIsShownModal] = useState<boolean>(false);
   const [filteredTodos, setFilteredTodos] = useState<ITodo[]>([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const filtered = todos.filter((todo: ITodo) => {
-      if (statusFilter === StatusFilterConstants.ACTIVE) {
-        return !todo.status;
-      } else if (statusFilter === StatusFilterConstants.COMPLETED) {
-        return todo.status;
-      }
-      return true;
-    });
-    setFilteredTodos([...filtered]);
+    setFilteredTodos(filterTodos(todos, statusFilter));
   }, [statusFilter, todos]);
 
   const addTodo = (todo: ITodo) => {

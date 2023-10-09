@@ -4,9 +4,10 @@ import { StatusFilterConstants } from '../../constants/statusFilterConstants';
 import styles from './FilterMenu.module.css';
 import { useTypedSelector } from '../../store/useTypedSelector';
 import classNames from 'classnames';
+import FilterButton from '../FilterButton/FilterButton';
 
 export default function FilterMenu() {
-    const {statusFilter} = useTypedSelector(state => state.todo);
+    const {statusFilter, todos} = useTypedSelector(state => state.todo);
     const dispatch = useDispatch();
 
     const handleStatusFilter = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -20,30 +21,12 @@ export default function FilterMenu() {
     return (
         <>
             <div className={styles.filter_container}>
-                <button 
-                    className={statusFilter === StatusFilterConstants.ALL ? classNames(styles.filter_button, styles.chosen_filter) : styles.filter_button} 
-                    onClick={handleStatusFilter} 
-                    type="button" 
-                    value={StatusFilterConstants.ALL}>
-                        All
-                </button>
-                <button 
-                    className={statusFilter === StatusFilterConstants.ACTIVE ? classNames(styles.filter_button, styles.chosen_filter) : styles.filter_button} 
-                    onClick={handleStatusFilter} 
-                    type="button" 
-                    value={StatusFilterConstants.ACTIVE}>
-                        Active
-                </button>
-                <button 
-                    className={statusFilter === StatusFilterConstants.COMPLETED ? classNames(styles.filter_button, styles.chosen_filter) : styles.filter_button} 
-                    onClick={handleStatusFilter} 
-                    type="button" 
-                    value={StatusFilterConstants.COMPLETED}>
-                        Completed
-                </button>
+                <FilterButton title='All' value={StatusFilterConstants.ALL} onClick={handleStatusFilter} />
+                <FilterButton title='Active' value={StatusFilterConstants.ACTIVE} onClick={handleStatusFilter} />
+                <FilterButton title='Completed' value={StatusFilterConstants.COMPLETED} onClick={handleStatusFilter} />
             </div>
             <div className={styles.delete_container}>
-                <button onClick={clearCompletedTodos} className={styles.delete_button} type='button'>Delete completed</button>
+                <button disabled={!todos.filter(todo => todo.status).length} onClick={clearCompletedTodos} className={styles.delete_button} type='button'>Delete completed</button>
             </div>
         </>
     );
