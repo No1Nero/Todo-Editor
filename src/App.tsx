@@ -12,6 +12,7 @@ import { filterTodos } from "./utils/filterTodos";
 import { ThemeContext } from "./context/themeContext"
 import Header from "./components/Header/Header";
 import { getLocalStorageData, setLocalStorageData } from "./utils/localStorageUtils";
+import ModalContainer from "./components/ModalContainer/ModalContainer";
 
 export default function App() {
   const {todos, statusFilter} = useTypedSelector(state => state.todo);
@@ -54,7 +55,11 @@ export default function App() {
   return (
     <ThemeContext.Provider value={{theme, toggleTheme}}>
       <div id={theme} className={isShownModal ? 'modal_opened' : 'modal_closed'}>
-        {isShownModal && <Modal filteredTodos={filteredTodos} onSetCreateInputText={setCreateInputText} onHandleModal={handleModal} createInputText={createInputText} onAddTodo={addTodo} />}
+        {isShownModal && 
+        <ModalContainer onHandleModal={handleModal}>
+          <Modal filteredTodos={filteredTodos} onSetCreateInputText={setCreateInputText} onHandleModal={handleModal} createInputText={createInputText} onAddTodo={addTodo} />
+        </ModalContainer>
+        }
         <Header />
         <div className='app_container'>
           <CreateInput filteredTodos={filteredTodos} onHandleModal={handleModal} createInputText={createInputText} onSetCreateInputText={setCreateInputText} onAddTodo={addTodo} />

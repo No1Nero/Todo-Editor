@@ -8,6 +8,9 @@ import classNames from 'classnames';
 import { useState } from 'react';
 import Modal from '../Modal/Modal';
 import { formatDateFromISO } from '../../utils/formatDateFromISO';
+import ModalContainer from '../ModalContainer/ModalContainer';
+import TodoExpiredMark from '../TodoExpiredMark/TodoExpiredMark';
+import { isTodoexpired } from '../../utils/isTodoExpired';
 
 interface TodoItemProps {
     item: ITodo,
@@ -32,7 +35,12 @@ export default function TodoItem({item}: TodoItemProps) {
 
     return (
         <div className='todo_item_container'>
-            {isShownModal && <Modal onHandleModal={handleModal} item={item}/>}
+            {isTodoexpired(expirationDate) && <TodoExpiredMark />}
+            {isShownModal && 
+            <ModalContainer onHandleModal={handleModal}>
+                <Modal onHandleModal={handleModal} item={item}/>
+            </ModalContainer>
+            }
             <div className='todo_item_content_wrapper'>
                 <div className='todo_item_header_wrapper'>
                     <input className='todo_item_checkbox' type="checkbox" checked={status} onChange={handleStatusChange}/>

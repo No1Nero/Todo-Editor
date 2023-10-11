@@ -10,6 +10,7 @@ import { StatusFilterConstants } from '../../constants/statusFilterConstants';
 import { useDispatch } from 'react-redux';
 import { TodoActionTypes } from '../../store/todoTypes';
 import { ThemeContext } from '../../context/themeContext';
+import CustomInput from '../CustomInput/CustomInput';
 
 interface CreateInputProps {
     createInputText: string,
@@ -23,7 +24,6 @@ export default function CreateInput({createInputText, onAddTodo, onSetCreateInpu
     const {statusFilter} = useTypedSelector(state => state.todo);
     const {theme} = useContext(ThemeContext);
     const dispatch = useDispatch();
-    const maxInputLength = 70;
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -50,7 +50,7 @@ export default function CreateInput({createInputText, onAddTodo, onSetCreateInpu
         <form className='create_input_form' onSubmit={handleSubmit}>
             <h2 className='create_input_title'>Create Todo</h2>
             <div className='create_input_input_wrapper'>
-                <input type="text" className='create_input_input' value={createInputText} maxLength={maxInputLength} onChange={handleInputText} placeholder="Enter title to create" />
+                <CustomInput value={createInputText} placeholder='Enter title to create' onChange={handleInputText} />
                 <button onClick={onHandleModal} type="button" className='create_input_button'><BsPlusLg color={theme === 'light' ? '#000' : '#fff'} size={40}/></button>
             </div>
         </form>

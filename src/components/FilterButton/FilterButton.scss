@@ -41,6 +41,10 @@
     background-color: $dark_overlay;
     color: gray;
 }
+.counter_label{
+    color: gray;
+    margin-left: 10px;
+}
 @media ($mobile_width) {
     .filter_button_filter_button{
         width: 120px;
