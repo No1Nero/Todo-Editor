@@ -27,8 +27,8 @@
     border-radius: 7px;
 }
 #light .modal_content{
-    background-color: #fff;
-    border-color: #000;
+    background-color: $white;
+    border-color: $black;
 }
 #dark .modal_content{
     background-color: $dark_surface;
@@ -40,10 +40,10 @@
     font-size: 28px;
 }
 #light .modal_title{
-    color: #000;
+    color: $black;
 }
 #dark .modal_title{
-    color: #fff;
+    color: $white;
 }
 .modal_inputs{
     display: flex;
@@ -56,10 +56,10 @@
     margin-bottom: 20px;
 }
 #light .modal_singe_input{
-    color: #000;
+    color: $black;
 }
 #dark .modal_singe_input{
-    color: #fff;
+    color: $white;
 }
 .modal_input_name{
     padding: 0;
@@ -71,7 +71,7 @@
 }
 .modal_input_name_req::after{
     content: '*';
-    color: red;
+    color: $red;
 }
 .modal_input_field{
     width: 250px;
@@ -82,14 +82,14 @@
     font-size: 18px;
 }
 #light .modal_input_field{
-    border-color: #000;
-    background-color: #fff;
-    color: #000;
+    border-color: $black;
+    background-color: $white;
+    color: $black;
 }
 #dark .modal_input_field{
     border-color: $dark_lite_overlay;
     background-color: $dark_lite_overlay;
-    color: #fff;
+    color: $white;
 }
 .modal_button_container{
     display: flex;
@@ -105,21 +105,21 @@
     border: 1px solid;
     border-radius: 3px;
     cursor: pointer;
-    color: red;
+    color: $red;
 }
 #light .modal_cancel_button{
-    border-color: #000;
-    background-color: #fff;
+    border-color: $black;
+    background-color: $white;
 }
 #dark .modal_cancel_button{
     border-color: $dark_lite_overlay;
     background-color: $dark_lite_overlay;
 }
 #light .modal_cancel_button:active{
-    border-color: red;
+    border-color: $red;
 }
 #dark .modal_cancel_button:active{
-    background-color: red;
+    border-color: $red;
 }
 .modal_save_button{
     width: 80px;
@@ -133,7 +133,7 @@
 }
 #light .modal_save_button{
     border-color: $light_blue;
-    background-color: #fff;
+    background-color: $white;
 }
 #dark .modal_save_button{
     border-color: $dark_lite_overlay;
@@ -146,15 +146,15 @@
     border-color: $light_blue;
 }
 #light .modal_save_button:disabled{
-    background-color: gray;
-    color: #000;
-    border: 1px solid #000;
+    background-color: $gray;
+    color: $black;
+    border: 1px solid $black;
     cursor: default;
 }
 #dark .modal_save_button:disabled{
     border: 1px solid $dark_lite_overlay;
     background-color: $dark_surface;
-    color: gray;
+    color: $gray;
     cursor: default;
 }
 @media ($mobile_width) {
@@ -168,8 +168,8 @@
         border-radius: 7px;
     }
     #light .modal_content{
-        background-color: #fff;
-        border-color: #000;
+        background-color: $white;
+        border-color: $black;
     }
     #dark .modal_content{
         background-color: $dark_surface;

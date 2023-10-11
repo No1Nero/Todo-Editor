@@ -10,36 +10,36 @@
     cursor: pointer;
 }
 #light .filter_button_filter_button{
-    background-color: #fff;
-    border-color: #000;
-    color: #000;
+    background-color: $white;
+    border-color: $black;
+    color: $black;
 }
 #dark .filter_button_filter_button{
     background-color: $dark_bg;
-    border-color: #fff;
-    color: #fff;
+    border-color: $white;
+    color: $white;
 }
 .filter_button_filter_button:first-child{
     border-left: none;
-    border-right: 0.5px solid #000;
+    border-right: 0.5px solid $black;
 }
 .filter_button_filter_button:last-child{
     border-right: none;
-    border-left: 0.5px solid #000;
+    border-left: 0.5px solid $black;
 }
 #light .filter_button_filter_button:hover{
     color: $light_blue;
 }
 #dark .filter_button_filter_button:hover{
-    color: gray;
+    color: $gray;
 }
 #light .filter_button_chosen_filter{
-    background-color: rgb(192, 192, 192);
+    background-color: $lite_gray;
     color: $light_blue;
 }
 #dark .filter_button_chosen_filter{
     background-color: $dark_overlay;
-    color: gray;
+    color: $gray;
 }
 @media ($mobile_width) {
     .filter_button_filter_button{

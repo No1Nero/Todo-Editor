@@ -12,13 +12,14 @@ import { filterTodos } from "./utils/filterTodos";
 import { ThemeContext } from "./context/themeContext"
 import Header from "./components/Header/Header";
 import { getLocalStorageData, setLocalStorageData } from "./utils/localStorageUtils";
+import { ThemeConstants } from "./constants/themeConstants";
 
 export default function App() {
   const {todos, statusFilter} = useTypedSelector(state => state.todo);
   const [createInputText, setCreateInputText] = useState<string>('');
   const [isShownModal, setIsShownModal] = useState<boolean>(false);
   const [filteredTodos, setFilteredTodos] = useState<ITodo[]>([]);
-  const [theme, setTheme] = useState<string>('light');
+  const [theme, setTheme] = useState<string>(ThemeConstants.LIGHT);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,7 +31,7 @@ export default function App() {
     if (storageTheme) {
       setTheme(storageTheme);
     } else {
-      setTheme('light');
+      setTheme(ThemeConstants.LIGHT);
     }
   }, []);
 
@@ -48,7 +49,7 @@ export default function App() {
   };
 
   const toggleTheme = () => {
-    setTheme(theme => (theme === 'light' ? 'dark' : 'light'));
+    setTheme(theme => (theme === ThemeConstants.LIGHT ? ThemeConstants.DARK : ThemeConstants.LIGHT));
   };
 
   return (

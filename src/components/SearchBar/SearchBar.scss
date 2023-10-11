@@ -10,22 +10,22 @@
     margin-right: 15px;
 }
 #light .search_bar_search_input{
-    background-color: #fff;
-    border-color: #000;
-    color: #000;
+    background-color: $white;
+    border-color: $black;
+    color: $black;
 }
 #dark .search_bar_search_input{
     background-color: $dark_lite_overlay;
     border-color: $dark_lite_overlay;
-    color: #fff;
+    color: $white;
 }
 .search_bar_search_title{
     font-size: 24px;
     margin-bottom: 15px;
 }
 #light .search_bar_search_title{
-    color: #000;
+    color: $black;
 }
 #dark .search_bar_search_title{
-    color: #fff;
+    color: $white;
 }

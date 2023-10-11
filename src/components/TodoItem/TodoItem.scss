@@ -10,9 +10,9 @@
     display: flex;
 }
 #light .todo_item_container{
-    border-color: #000;
+    border-color: $black;
     border-left-color: $light_blue;
-    background-color: #fff;
+    background-color: $white;
 }
 #dark .todo_item_container{
     border-color: $dark_header;
@@ -34,7 +34,7 @@
 .todo_item_checkbox{
     min-width: 25px;
     min-height: 25px;
-    border: 1px solid #000;
+    border: 1px solid $black;
     margin-right: 10px;
     cursor: pointer;
 }
@@ -44,10 +44,10 @@
     overflow-x: hidden;
 }
 #light .todo_item_title{
-    color: #000;
+    color: $black;
 }
 #dark .todo_item_title{
-    color: #fff;
+    color: $white;
 }
 .todo_item_checked_title{
     text-decoration: line-through;
@@ -59,10 +59,10 @@
     margin: 0 0 10px 0;
 }
 #light .todo_item_date{
-    color: #464545;
+    color: $lite_gray;
 }
 #dark .todo_item_date{
-    color: gray;
+    color: $gray;
 }
 .todo_item_button_container{
     display: flex;
@@ -79,20 +79,21 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    color: $red;
 }
 #light .todo_item_delete_button{
-    border-color: #000;
-    background-color: #fff;
+    border-color: $black;
+    background-color: $white;
 }
 #dark .todo_item_delete_button{
     border-color: $dark_lite_overlay;
     background-color: $dark_lite_overlay;
 }
 #light .todo_item_delete_button:active{
-    border-color: red;
+    border-color: $red;
 }
 #dark .todo_item_delete_button:active{
-    border-color: red;
+    border-color: $red;
 }
 .todo_item_edit_button{
     border: 1px solid;
@@ -103,10 +104,11 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    color: $light_blue;
 }
 #light .todo_item_edit_button{
-    border-color: #000;
-    background-color: #fff;
+    border-color: $black;
+    background-color: $white;
 }
 #dark .todo_item_edit_button{
     border-color: $dark_lite_overlay;
@@ -119,7 +121,7 @@
     border-color: $light_blue;
 }
 #light .todo_item_edit_button:disabled{
-    background-color: rgb(192, 192, 192);
+    background-color: $lite_gray;
     cursor: default;
 }
 #dark .todo_item_edit_button:disabled{
@@ -127,7 +129,7 @@
     cursor: default;
 }
 #light .todo_item_edit_button:disabled:active{
-    border-color: #000;
+    border-color: $black;
 }
 #dark .todo_item_edit_button:disabled:active{
     border-color: $dark_lite_overlay;
