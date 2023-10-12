@@ -1,0 +1,37 @@
+@import "../../styles/variables";
+
+.header{
+    height: 100px;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 100px;
+    color: $white;
+    margin-bottom: 30px;
+}
+#light .header {
+    background-color: $light_blue;
+}
+#dark .header{
+    background-color: $dark_header;
+}
+.header_theme_toggler{
+    display: flex;
+    align-items: center;
+}
+.header_theme_label{
+    font-size: 20px;
+    margin-right: 10px;
+}
+@media ($mobile_width) {
+    .header{
+        font-size: 18px;
+        padding: 0 10px;
+        align-items: flex-end;
+    }
+    .header_theme_toggler{
+        padding-bottom: 10px;
+    }
+}

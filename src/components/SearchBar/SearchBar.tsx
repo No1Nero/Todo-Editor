@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { formatInputText } from "../../utils/formatInputText";
-import styles from './SearchBar.module.css';
+import './SearchBar.scss';
 
 interface SearchBarProps {
     searchText: string,
@@ -15,8 +15,8 @@ export default function SearchBar({searchText, onSetSearchText}: SearchBarProps)
 
     return (
         <div>
-            <h2 className={styles.search_title}>Search Todos</h2>
-            <input className={styles.search_input} type="text" value={searchText} onChange={handleInputChange} placeholder="Enter to search todos" />
+            <h2 className='search_bar_search_title'>Search Todos</h2>
+            <input className='search_bar_search_input' type="text" value={searchText} onChange={handleInputChange} placeholder="Enter to search todos" />
         </div>
     );
 };

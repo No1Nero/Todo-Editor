@@ -1,0 +1,89 @@
+@import '../../styles/variables';
+
+.todo_list_list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+.todo_list_item_enter{
+    opacity: 0;
+    transform: scale(0);
+}
+.todo_list_item_enter_active{
+    opacity: 1;
+    transform: scale(1);
+    transition: all 300ms;
+}
+.todo_list_item_exit{
+    opacity: 1;
+    transform: scale(1);
+}
+.todo_list_item_exit_active{
+    opacity: 0;
+    transform: scale(0);
+    transition: all 300ms;
+}
+.todo_list_empty_message{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: $gray;
+    margin-top: 30px;
+}
+.todo_list_delete_button{
+    width: 180px;
+    height: 40px;
+    border: 1px solid;
+    color: $red;
+    font-size: 22px;
+    padding: 3px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#light .todo_list_delete_button{
+    border-color: $black;
+    background-color: $white;
+}
+#dark .todo_list_delete_button{
+    border-color: $dark_lite_overlay;
+    background-color: $dark_lite_overlay;
+}
+#light .todo_list_delete_button:active{
+    border-color: $red;
+}
+#dark .todo_list_delete_button:active{
+    border-color: $red;
+}
+#light .todo_list_delete_button:disabled{
+    border-color: $black;
+    background-color: $lite_gray;
+    color: $black;
+    cursor: default;
+}
+#dark .todo_list_delete_button:disabled{
+    border: 1px solid $dark_lite_overlay;
+    background-color: $dark_bg;
+    color: $gray;
+    cursor: default;
+}
+.todo_list_search_container{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 30px;
+}
+@media ($mobile_width) {
+    .todo_list_list{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .todo_list_search_container{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .todo_list_delete_button{
+        margin-top: 20px;
+    }
+}

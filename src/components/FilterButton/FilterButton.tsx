@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { useTypedSelector } from "../../store/useTypedSelector";
-import styles from './FilterButton.module.css';
+import './FilterButton.scss';
 
 interface FilterButtonProps {
     title: string,
@@ -11,6 +11,6 @@ interface FilterButtonProps {
 export default function FilterButton({title, value, onClick}: FilterButtonProps) {
     const {statusFilter} = useTypedSelector(state => state.todo);
     return (
-        <button className={statusFilter === value ? classNames(styles.filter_button, styles.chosen_filter) : styles.filter_button} type="button" onClick={onClick} value={value}>{title}</button>
+        <button className={statusFilter === value ? classNames('filter_button_filter_button', 'filter_button_chosen_filter') : 'filter_button_filter_button'} type="button" onClick={onClick} value={value}>{title}</button>
     );
 };

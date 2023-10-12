@@ -1,15 +1,14 @@
-.header{
-    height: 100px;
-    background-color: rgb(87, 87, 255);
-    font-size: 34px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    padding-left: 100px;
-    color: #fff;
-    margin-bottom: 30px;
+@import './styles/variables';
+
+#light{
+    min-height: 100vh;
+    background-color: $white;
 }
-.container{
+#dark{
+    min-height: 100vh;
+    background-color: $dark_bg;
+}
+.app_container{
     padding: 0 180px 0 100px;
     padding-bottom: 30px;
 }
@@ -20,8 +19,8 @@
 .modal_closed{
     overflow-y: visible;
 }
-@media (max-width: 768px) {
-    .container{
+@media ($mobile_width) {
+    .app_container{
         display: flex;
         flex-direction: column;
         align-items: center;

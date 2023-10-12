@@ -1,0 +1,48 @@
+@import '../../styles/variables';
+
+.filter_button_filter_button{
+    width: 25%;
+    font-size: 22px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 0.5px solid;
+    cursor: pointer;
+}
+#light .filter_button_filter_button{
+    background-color: $white;
+    border-color: $black;
+    color: $black;
+}
+#dark .filter_button_filter_button{
+    background-color: $dark_bg;
+    border-color: $white;
+    color: $white;
+}
+.filter_button_filter_button:first-child{
+    border-left: none;
+    border-right: 0.5px solid $black;
+}
+.filter_button_filter_button:last-child{
+    border-right: none;
+    border-left: 0.5px solid $black;
+}
+#light .filter_button_filter_button:hover{
+    color: $light_blue;
+}
+#dark .filter_button_filter_button:hover{
+    color: $gray;
+}
+#light .filter_button_chosen_filter{
+    background-color: $lite_gray;
+    color: $light_blue;
+}
+#dark .filter_button_chosen_filter{
+    background-color: $dark_overlay;
+    color: $gray;
+}
+@media ($mobile_width) {
+    .filter_button_filter_button{
+        width: 120px;
+    }
+}

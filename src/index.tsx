@@ -1,10 +1,9 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { Provider } from 'react-redux';
 import { persistor, store } from './store/store';
 import { PersistGate } from 'redux-persist/integration/react';
-import './index.css';
+import './index.scss';
 import 'normalize.css';
 
 const root = ReactDOM.createRoot(

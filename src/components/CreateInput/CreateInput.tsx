@@ -1,4 +1,4 @@
-import styles from './CreateInput.module.css';
+import './CreateInput.scss';
 import { BsPlusLg } from 'react-icons/bs';
 import { ITodo } from "../../models/ITodo";
 import { Dispatch, SetStateAction } from 'react';
@@ -45,11 +45,11 @@ export default function CreateInput({createInputText, onAddTodo, onSetCreateInpu
     };
 
     return (
-        <form className={styles.form} onSubmit={handleSubmit}>
-            <h2 className={styles.title}>Create Todo</h2>
-            <div className={styles.input_wrapper}>
-                <input type="text" className={styles.input} value={createInputText} maxLength={maxInputLength} onChange={handleInputText} placeholder="Enter title to create" />
-                <button onClick={onHandleModal} type="button" className={styles.button}><BsPlusLg size={40}/></button>
+        <form className='create_input_form' onSubmit={handleSubmit}>
+            <h2 className='create_input_title'>Create Todo</h2>
+            <div className='create_input_input_wrapper'>
+                <input type="text" className='create_input_input' value={createInputText} maxLength={maxInputLength} onChange={handleInputText} placeholder="Enter title to create" />
+                <button onClick={onHandleModal} type="button" className='create_input_button'><BsPlusLg className='add_todo_icon' size={40}/></button>
             </div>
         </form>
     );
