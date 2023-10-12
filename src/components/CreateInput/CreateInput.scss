@@ -8,10 +8,10 @@
     margin-bottom: 15px;
 }
 #light .create_input_title{
-    color: #000;
+    color: $black;
 }
 #dark .create_input_title{
-    color: #fff;
+    color: $white;
 }
 .create_input_input_wrapper{
     display: flex;
@@ -29,10 +29,16 @@
     cursor: pointer;
 }
 #light .create_input_button{
-    border-color: #000;
-    background-color: #fff;
+    border-color: $black;
+    background-color: $white;
 }
 #dark .create_input_button{
     border-color: $dark_lite_overlay;
     background-color: $dark_lite_overlay;
+}
+#light .add_todo_icon{
+    color: $black;
+}
+#dark .add_todo_icon{
+    color: $white;
 }

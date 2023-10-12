@@ -12,7 +12,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { getMaxDate, getMinDate } from '../../utils/timeFormats';
 import { useTypedSelector } from '../../store/useTypedSelector';
 import { StatusFilterConstants } from '../../constants/statusFilterConstants';
-import { maxInputLength } from '../../constants/inputConstants';
+import { maxExpirationDate, maxInputLength } from '../../constants/inputConstants';
 
 interface ModalProps {
     createInputText?: string,
@@ -104,6 +104,7 @@ export default function Modal({createInputText, onAddTodo, onSetCreateInputText,
                         onChange={(date) => setExpires(date)} 
                         dateFormat='dd.MM.yyyy HH:mm' 
                         minDate={new Date()} 
+                        maxDate={maxExpirationDate}
                         showTimeSelect 
                         timeFormat='HH:mm' 
                         timeIntervals={5} 

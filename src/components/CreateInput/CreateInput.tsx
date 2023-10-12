@@ -1,7 +1,7 @@
 import './CreateInput.scss';
 import { BsPlusLg } from 'react-icons/bs';
 import { ITodo } from "../../models/ITodo";
-import { Dispatch, SetStateAction, useContext } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { formatInputText } from '../../utils/formatInputText';
 import uuid from 'react-uuid';
 import { addOneDay } from '../../utils/timeUtils';
@@ -9,7 +9,6 @@ import { useTypedSelector } from '../../store/useTypedSelector';
 import { StatusFilterConstants } from '../../constants/statusFilterConstants';
 import { useDispatch } from 'react-redux';
 import { TodoActionTypes } from '../../store/todoTypes';
-import { ThemeContext } from '../../context/themeContext';
 import CustomInput from '../CustomInput/CustomInput';
 
 interface CreateInputProps {
@@ -22,7 +21,6 @@ interface CreateInputProps {
 
 export default function CreateInput({createInputText, onAddTodo, onSetCreateInputText, onHandleModal, filteredTodos}: CreateInputProps) {
     const {statusFilter} = useTypedSelector(state => state.todo);
-    const {theme} = useContext(ThemeContext);
     const dispatch = useDispatch();
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -51,7 +49,7 @@ export default function CreateInput({createInputText, onAddTodo, onSetCreateInpu
             <h2 className='create_input_title'>Create Todo</h2>
             <div className='create_input_input_wrapper'>
                 <CustomInput value={createInputText} placeholder='Enter title to create' onChange={handleInputText} />
-                <button onClick={onHandleModal} type="button" className='create_input_button'><BsPlusLg color={theme === 'light' ? '#000' : '#fff'} size={40}/></button>
+                <button onClick={onHandleModal} type="button" className='create_input_button'><BsPlusLg className='add_todo_icon' size={40}/></button>
             </div>
         </form>
     );

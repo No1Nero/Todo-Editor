@@ -14,8 +14,8 @@
     box-sizing: border-box;
 }
 #light .popup_content{
-    background-color: #fff;
-    border-color: #000;
+    background-color: $white;
+    border-color: $black;
 }
 #dark .popup_content{
     background-color: $dark_surface;
@@ -25,10 +25,10 @@
     font-size: 20px;
 }
 #light .popup_title{
-    color: #000;
+    color: $black;
 }
 #dark .popup_title{
-    color: #fff;
+    color: $white;
 }
 .popup_button_container{
     width: 300px;
@@ -43,21 +43,21 @@
     border: 1px solid;
     border-radius: 3px;
     cursor: pointer;
-    color: red;
+    color: $red;
 }
 #light .popup_cancel_button{
-    border-color: #000;
-    background-color: #fff;
+    border-color: $black;
+    background-color: $white;
 }
 #dark .popup_cancel_button{
     border-color: $dark_lite_overlay;
     background-color: $dark_lite_overlay;
 }
 #light .popup_cancel_button:active{
-    border-color: red;
+    border-color: $red;
 }
 #dark .popup_cancel_button:active{
-    border-color: red;
+    border-color: $red;
 }
 .popup_save_button{
     width: 60px;
@@ -70,8 +70,8 @@
     color: $light_blue;
 }
 #light .popup_save_button{
-    border-color: #000;
-    background-color: #fff;
+    border-color: $black;
+    background-color: $white;
 }
 #dark .popup_save_button{
     border-color: $dark_lite_overlay;
@@ -84,15 +84,15 @@
     border-color: $light_blue;
 }
 #light .popup_save_button:disabled{
-    background-color: gray;
-    color: #000;
-    border: 1px solid #000;
+    background-color: $gray;
+    color: $black;
+    border: 1px solid $black;
     cursor: default;
 }
 #dark .popup_save_button:disabled{
     border: 1px solid $dark_lite_overlay;
     background-color: $dark_surface;
-    color: gray;
+    color: $gray;
     cursor: default;
 }
 @media ($mobile_width) {
@@ -101,8 +101,8 @@
         text-align: center;
     }
     #light .popup_content{
-        background-color: #fff;
-        border-color: #000;
+        background-color: $white;
+        border-color: $black;
     }
     #dark .popup_content{
         background-color: $dark_surface;

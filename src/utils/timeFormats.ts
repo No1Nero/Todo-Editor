@@ -7,12 +7,15 @@ export const getMinDate = (date: Date | null): Date => {
         return addFiveMinutes(currentDate);
     }
 
+    const currentDayStart = startOfDay(currentDate);
+    const dateDayStart = startOfDay(date);
+
     if (isSameDay(date, currentDate)) {
-        return date > addFiveMinutes(currentDate) ? addFiveMinutes(currentDate) : date;
+        return addFiveMinutes(currentDate);
     }
 
-    if (date > currentDate) {
-        return startOfDay(date);
+    if (dateDayStart > currentDayStart) {
+        return dateDayStart;
     }
 
     return addFiveMinutes(currentDate);

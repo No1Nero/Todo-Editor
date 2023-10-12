@@ -10,12 +10,12 @@
     margin-right: 15px;
 }
 #light .custom_input{
-    background-color: #fff;
-    border-color: #000;
-    color: #000;
+    background-color: $white;
+    border-color: $black;
+    color: $black;
 }
 #dark .custom_input{
     background-color: $dark_lite_overlay;
     border-color: $dark_lite_overlay;
-    color: #fff;
+    color: $white;
 }

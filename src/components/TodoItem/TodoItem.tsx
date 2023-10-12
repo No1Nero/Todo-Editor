@@ -51,8 +51,8 @@ export default function TodoItem({item}: TodoItemProps) {
                     <p className='todo_item_date'>Expires: {formatDateFromISO(expirationDate)}</p>
                 </div>
                 <div className='todo_item_button_container'>
-                    <button onClick={handleModal} disabled={status} className='todo_item_edit_button'><BsPencil size={35} color='rgb(87, 87, 255)' /></button>
-                    <button onClick={deleteTodo} className='todo_item_delete_button' type='button'><BsTrash size={35} color='red' /></button>
+                    <button onClick={handleModal} disabled={status} className='todo_item_edit_button'><BsPencil size={35} /></button>
+                    <button onClick={deleteTodo} className='todo_item_delete_button' type='button'><BsTrash size={35} /></button>
                 </div>
             </div>
         </div>
