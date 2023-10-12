@@ -13,6 +13,7 @@ import { getMaxDate, getMinDate } from '../../utils/timeFormats';
 import { useTypedSelector } from '../../store/useTypedSelector';
 import { StatusFilterConstants } from '../../constants/statusFilterConstants';
 import { maxExpirationDate, maxInputLength } from '../../constants/inputConstants';
+import { fiveMins } from '../../constants/timeConstants';
 
 interface ModalProps {
     createInputText?: string,
@@ -107,7 +108,7 @@ export default function Modal({createInputText, onAddTodo, onSetCreateInputText,
                         maxDate={maxExpirationDate}
                         showTimeSelect 
                         timeFormat='HH:mm' 
-                        timeIntervals={5} 
+                        timeIntervals={fiveMins} 
                         minTime={getMinDate(expires)} 
                         maxTime={getMaxDate(new Date())}
                         className='modal_input_field'

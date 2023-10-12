@@ -9,9 +9,7 @@ export default function ModalContainer({children, onHandleModal}: ModalContainer
     return (
         <div className='modal_container_window'>
             <div onClick={onHandleModal} className='modal_container_blur'></div>
-            <>
-                {children}
-            </>
+            {children}
         </div>
     );
 };
