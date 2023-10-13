@@ -1,5 +1,6 @@
+import { fiveMins, oneDay } from "../constants/timeConstants";
+
 export const addFiveMinutes = (date: Date) => {
-    const fiveMins = 5;
     return new Date(date.setMinutes(date.getMinutes() + fiveMins));
 };
 
@@ -14,8 +15,7 @@ export const startOfDay = (date: Date) => {
 };
 
 export const addOneDay = (date: Date) => {
-    const addDay = 1;
-    return new Date(date.setDate(date.getDate() + addDay));
+    return new Date(date.setDate(date.getDate() + oneDay));
 };
 
 export const endOfDay = (date: Date) => {

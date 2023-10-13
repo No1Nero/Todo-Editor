@@ -8,6 +8,7 @@
     border-radius: 7px;
     font-size: 18px;
     display: flex;
+    position: relative;
 }
 #light .todo_item_container{
     border-color: $black;
@@ -59,7 +60,7 @@
     margin: 0 0 10px 0;
 }
 #light .todo_item_date{
-    color: $lite_gray;
+    color: $gray;
 }
 #dark .todo_item_date{
     color: $gray;
@@ -133,6 +134,22 @@
 }
 #dark .todo_item_edit_button:disabled:active{
     border-color: $dark_lite_overlay;
+}
+#light .edit_icon:active{
+    transform: scale(0.8);
+    transition: all 300ms;
+}
+#dark .edit_icon:active{
+    transform: scale(0.8);
+    transition: all 300ms;
+}
+#light .delete_icon:active{
+    transform: scale(0.8);
+    transition: all 300ms;
+}
+#dark .delete_icon:active{
+    transform: scale(0.8);
+    transition: all 300ms;
 }
 @media ($mobile_width) {
     .todo_item_container{
