@@ -21,11 +21,11 @@
 }
 .filter_button_filter_button:first-child{
     border-left: none;
-    border-right: 0.5px solid #000;
+    border-right: 0.5px solid $black;
 }
 .filter_button_filter_button:last-child{
     border-right: none;
-    border-left: 0.5px solid #000;
+    border-left: 0.5px solid $black;
 }
 #light .filter_button_filter_button:hover{
     color: $light_blue;
