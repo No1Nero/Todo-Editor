@@ -1,8 +1,8 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { formatInputText } from "../../utils/formatInputText";
-import './SearchBar.scss';
 import CustomInput from "../CustomInput/CustomInput";
 import { RxCross2 } from "react-icons/rx";
+import './SearchBar.scss';
 
 interface SearchBarProps {
     searchText: string,

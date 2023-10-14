@@ -1,111 +1,63 @@
 @import '../../styles/variables';
 
-.popup_content{
-    width: 450px;
-    height: 180px;
-    z-index: 110;
-    border: 1px solid;
-    border-radius: 7px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 30px 0;
-    box-sizing: border-box;
+.popup{
+    &_content{
+        width: 450px;
+        height: 180px;
+        z-index: 110;
+        border: 1px solid $black;
+        border-radius: 7px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 30px 0;
+        box-sizing: border-box;
+        background-color: var(--background-surface);
+    }
+    &_title{
+        font-size: 20px;
+        color: var(--color-primary);
+    }
+    &_button_container{
+        width: 300px;
+        display: flex;
+        justify-content: space-around;
+    }
+    &_cancel_button{
+        width: 60px;
+        height: 30px;
+        font-size: 20px;
+        padding: 3px 4px;
+        border: 1px solid var(--border-lite-color);
+        border-radius: 3px;
+        cursor: pointer;
+        color: $red;
+        background-color: var(--background-lite-color);
+    }
+    &_cancel_button:active{
+        border-color: $red;
+    }
+    &_save_button{
+        width: 60px;
+        height: 30px;
+        font-size: 20px;
+        padding: 3px 4px;
+        border: 1px solid var(--border-lite-color);
+        border-radius: 3px;
+        cursor: pointer;
+        color: $light_blue;
+        background-color: var(--background-lite-color);
+    }
+    &_save_button:active{
+        border-color: $light_blue;
+    }
 }
-#light .popup_content{
-    background-color: $white;
-    border-color: $black;
-}
-#dark .popup_content{
-    background-color: $dark_surface;
-    border-color: $dark_header;
-}
-.popup_title{
-    font-size: 20px;
-}
-#light .popup_title{
-    color: $black;
-}
-#dark .popup_title{
-    color: $white;
-}
-.popup_button_container{
-    width: 300px;
-    display: flex;
-    justify-content: space-around;
-}
-.popup_cancel_button{
-    width: 60px;
-    height: 30px;
-    font-size: 20px;
-    padding: 3px 4px;
-    border: 1px solid;
-    border-radius: 3px;
-    cursor: pointer;
-    color: $red;
-}
-#light .popup_cancel_button{
-    border-color: $black;
-    background-color: $white;
-}
-#dark .popup_cancel_button{
-    border-color: $dark_lite_overlay;
-    background-color: $dark_lite_overlay;
-}
-#light .popup_cancel_button:active{
-    border-color: $red;
-}
-#dark .popup_cancel_button:active{
-    border-color: $red;
-}
-.popup_save_button{
-    width: 60px;
-    height: 30px;
-    font-size: 20px;
-    padding: 3px 4px;
-    border: 1px solid;
-    border-radius: 3px;
-    cursor: pointer;
-    color: $light_blue;
-}
-#light .popup_save_button{
-    border-color: $black;
-    background-color: $white;
-}
-#dark .popup_save_button{
-    border-color: $dark_lite_overlay;
-    background-color: $dark_lite_overlay;
-}
-#light .popup_save_button:active{
-    border-color: $light_blue;
-}
-#dark .popup_save_button:active{
-    border-color: $light_blue;
-}
-#light .popup_save_button:disabled{
-    background-color: $gray;
-    color: $black;
-    border: 1px solid $black;
-    cursor: default;
-}
-#dark .popup_save_button:disabled{
-    border: 1px solid $dark_lite_overlay;
-    background-color: $dark_surface;
-    color: $gray;
-    cursor: default;
-}
-@media ($mobile_width) {
+@media ($tablet_width) {
     .popup_content{
         width: 380px;
         text-align: center;
-    }
-    #light .popup_content{
-        background-color: $white;
+        background-color: var(--background-surface);
         border-color: $black;
-    }
-    #dark .popup_content{
-        background-color: $dark_surface;
-        border-color: $dark_header;
     }
 }

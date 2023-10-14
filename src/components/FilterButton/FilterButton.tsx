@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { useTypedSelector } from "../../store/useTypedSelector";
-import './FilterButton.scss';
 import { todoCounter } from "../../utils/todoCounter";
+import './FilterButton.scss';
 
 interface FilterButtonProps {
     title: string,
@@ -15,7 +15,7 @@ export default function FilterButton({title, value, onClick}: FilterButtonProps)
 
     return (
         <button 
-            className={statusFilter === value ? classNames('filter_button_filter_button', 'filter_button_chosen_filter') : 'filter_button_filter_button'} 
+            className={statusFilter === value ? classNames('filter_button', 'filter_button_chosen_filter') : 'filter_button'} 
             type="button" 
             onClick={onClick} 
             value={value}>

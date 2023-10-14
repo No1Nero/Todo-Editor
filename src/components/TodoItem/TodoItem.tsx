@@ -1,16 +1,16 @@
-import { ITodo } from '../../models/ITodo';
-import { useDispatch } from 'react-redux';
-import { TodoActionTypes } from '../../store/todoTypes';
-import { BsTrash } from 'react-icons/bs';
-import { BsPencil } from 'react-icons/bs';
-import './TodoItem.scss';
-import classNames from 'classnames';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import classNames from 'classnames';
+import { ITodo } from '../../models/ITodo';
+import { TodoActionTypes } from '../../store/todoTypes';
 import Modal from '../Modal/Modal';
 import { formatDateFromISO } from '../../utils/formatDateFromISO';
 import ModalContainer from '../ModalContainer/ModalContainer';
 import TodoExpiredMark from '../TodoExpiredMark/TodoExpiredMark';
 import { isTodoexpired } from '../../utils/isTodoExpired';
+import { BsTrash } from 'react-icons/bs';
+import { BsPencil } from 'react-icons/bs';
+import './TodoItem.scss';
 
 interface TodoItemProps {
     item: ITodo,

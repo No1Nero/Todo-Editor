@@ -10,28 +10,35 @@
     padding: 0 100px;
     color: $white;
     margin-bottom: 30px;
+    background-color: var(--header-background);
+
+    &_theme_toggler{
+        display: flex;
+        align-items: center;
+    }
+    &_theme_label{
+        font-size: 20px;
+        margin-right: 10px;
+    }
 }
-#light .header {
-    background-color: $light_blue;
-}
-#dark .header{
-    background-color: $dark_header;
-}
-.header_theme_toggler{
-    display: flex;
-    align-items: center;
-}
-.header_theme_label{
-    font-size: 20px;
-    margin-right: 10px;
-}
-@media ($mobile_width) {
+@media ($tablet_width) {
     .header{
         font-size: 18px;
         padding: 0 10px;
         align-items: flex-end;
+
+        &_theme_toggler{
+            padding-bottom: 10px;
+        }
     }
-    .header_theme_toggler{
-        padding-bottom: 10px;
+}
+@media ($mobile_width) {
+    .header{
+        font-size: 16px;
+
+        &_theme_label{
+            font-size: 16px;
+            margin-right: 5px;
+        }
     }
 }
