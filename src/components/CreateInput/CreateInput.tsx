@@ -1,15 +1,15 @@
-import './CreateInput.scss';
-import { BsPlusLg } from 'react-icons/bs';
-import { ITodo } from "../../models/ITodo";
 import { Dispatch, SetStateAction } from 'react';
-import { formatInputText } from '../../utils/formatInputText';
+import { useDispatch } from 'react-redux';
 import uuid from 'react-uuid';
+import { ITodo } from "../../models/ITodo";
+import { formatInputText } from '../../utils/formatInputText';
 import { addOneDay } from '../../utils/timeUtils';
 import { useTypedSelector } from '../../store/useTypedSelector';
 import { StatusFilterConstants } from '../../constants/statusFilterConstants';
-import { useDispatch } from 'react-redux';
 import { TodoActionTypes } from '../../store/todoTypes';
 import CustomInput from '../CustomInput/CustomInput';
+import { BsPlusLg } from 'react-icons/bs';
+import './CreateInput.scss';
 
 interface CreateInputProps {
     createInputText: string,

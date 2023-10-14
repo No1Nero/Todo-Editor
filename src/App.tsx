@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import CreateInput from "./components/CreateInput/CreateInput";
-import "./App.scss";
-import { ITodo } from "./models/ITodo";
 import { useDispatch } from "react-redux";
+import CreateInput from "./components/CreateInput/CreateInput";
+import { ITodo } from "./models/ITodo";
 import { TodoActionTypes } from "./store/todoTypes";
 import TodoList from "./components/TodoList/TodoList";
 import Modal from "./components/Modal/Modal";
@@ -14,6 +13,7 @@ import Header from "./components/Header/Header";
 import { getLocalStorageData, setLocalStorageData } from "./utils/localStorageUtils";
 import ModalContainer from "./components/ModalContainer/ModalContainer";
 import { ThemeConstants } from "./constants/themeConstants";
+import "./App.scss";
 
 export default function App() {
   const {todos, statusFilter} = useTypedSelector(state => state.todo);

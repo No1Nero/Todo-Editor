@@ -1,14 +1,14 @@
-import TodoItem from '../TodoItem/TodoItem';
+import { useEffect, useState } from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import './TodoList.scss';
+import { useDispatch } from 'react-redux';
+import TodoItem from '../TodoItem/TodoItem';
 import { ITodo } from '../../models/ITodo';
 import SearchBar from '../SearchBar/SearchBar';
-import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { TodoActionTypes } from '../../store/todoTypes';
 import { useTypedSelector } from '../../store/useTypedSelector';
 import ModalContainer from '../ModalContainer/ModalContainer';
 import PopUp from '../PopUp/PopUp';
+import './TodoList.scss';
 
 interface TodoListProps {
     filteredTodos: ITodo[],
@@ -47,7 +47,7 @@ export default function TodoList({filteredTodos, children}: TodoListProps) {
         {children}
         {searchedTodos.length
         ?
-        <TransitionGroup component='ul' className='todo_list_list' >
+        <TransitionGroup component='ul' className='todo_list' >
         {searchedTodos.map(item => (
             <CSSTransition key={item.id} timeout={300} 
             classNames={{

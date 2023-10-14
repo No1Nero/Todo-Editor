@@ -5,16 +5,13 @@
     height: 40px;
     font-size: 20px;
     padding: 2px 7px;
-    border: 1px solid;
+    border: 1px solid var(--border-lite-color);
     border-radius: 5px;
+    background-color: var(--background-lite-color);
+    color: var(--color-primary);
 }
-#light .custom_input{
-    background-color: $white;
-    border-color: $black;
-    color: $black;
-}
-#dark .custom_input{
-    background-color: $dark_lite_overlay;
-    border-color: $dark_lite_overlay;
-    color: $white;
+@media ($mobile_width) {
+    .custom_input{
+        width: 250px;
+    }
 }

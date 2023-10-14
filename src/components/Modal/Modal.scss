@@ -1,161 +1,105 @@
 @import '../../styles/variables';
 
-.modal_content{
-    width: 400px;
-    height: 500px;
-    border: 1px solid;
-    z-index: 110;
-    display: flex;
-    flex-direction: column;
-    border-radius: 7px;
-}
-#light .modal_content{
-    background-color: $white;
-    border-color: $black;
-}
-#dark .modal_content{
-    background-color: $dark_surface;
-    border-color: $dark_header;
-}
-.modal_title{
-    text-align: center;
-    margin: 15px 0;
-    font-size: 28px;
-}
-#light .modal_title{
-    color: $black;
-}
-#dark .modal_title{
-    color: $white;
-}
-.modal_inputs{
-    display: flex;
-    flex-direction: column;
-    padding: 0 30px;
-    font-size: 20px;
-    height: 100%;
-}
-.modal_singe_input{
-    margin-bottom: 20px;
-}
-#light .modal_singe_input{
-    color: $black;
-}
-#dark .modal_singe_input{
-    color: $white;
-}
-.modal_input_name{
-    padding: 0;
-    margin-bottom: 5px;
-}
-.modal_input_name_req{
-    padding: 0;
-    margin-bottom: 5px;
-}
-.modal_input_name_req::after{
-    content: '*';
-    color: $red;
-}
-.modal_input_field{
-    width: 250px;
-    height: 30px;
-    border-radius: 4px;
-    border: 1px solid;
-    padding: 2px 5px;
-    font-size: 18px;
-}
-#light .modal_input_field{
-    border-color: $black;
-    background-color: $white;
-    color: $black;
-}
-#dark .modal_input_field{
-    border-color: $dark_lite_overlay;
-    background-color: $dark_lite_overlay;
-    color: $white;
-}
-.modal_button_container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 30px 20px 30px;
-}
-.modal_cancel_button{
-    width: 80px;
-    height: 30px;
-    font-size: 20px;
-    padding: 3px 4px;
-    border: 1px solid;
-    border-radius: 3px;
-    cursor: pointer;
-    color: $red;
-}
-#light .modal_cancel_button{
-    border-color: $black;
-    background-color: $white;
-}
-#dark .modal_cancel_button{
-    border-color: $dark_lite_overlay;
-    background-color: $dark_lite_overlay;
-}
-#light .modal_cancel_button:active{
-    border-color: $red;
-}
-#dark .modal_cancel_button:active{
-    border-color: $red;
-}
-.modal_save_button{
-    width: 80px;
-    height: 30px;
-    font-size: 20px;
-    padding: 3px 4px;
-    border: 1px solid;
-    border-radius: 3px;
-    cursor: pointer;
-    color: $light_blue;
-}
-#light .modal_save_button{
-    border-color: $light_blue;
-    background-color: $white;
-}
-#dark .modal_save_button{
-    border-color: $dark_lite_overlay;
-    background-color: $dark_lite_overlay;
-}
-#light .modal_save_button:active{
-    border-color: $light_blue;
-}
-#dark .modal_save_button:active{
-    border-color: $light_blue;
-}
-#light .modal_save_button:disabled{
-    background-color: $gray;
-    color: $black;
-    border: 1px solid $black;
-    cursor: default;
-}
-#dark .modal_save_button:disabled{
-    border: 1px solid $dark_lite_overlay;
-    background-color: $dark_surface;
-    color: $gray;
-    cursor: default;
-}
-@media ($mobile_width) {
-    .modal_content{
-        width: 350px;
+.modal{
+    &_content{
+        width: 400px;
         height: 500px;
-        border: 1px solid;
+        border: 1px solid $black;
         z-index: 110;
         display: flex;
         flex-direction: column;
         border-radius: 7px;
+        background-color: var(--background-surface);
     }
-    #light .modal_content{
-        background-color: $white;
-        border-color: $black;
+    &_title{
+        text-align: center;
+        margin: 15px 0;
+        font-size: 28px;
+        color: var(--color-primary);
     }
-    #dark .modal_content{
-        background-color: $dark_surface;
-        border-color: $dark_header;
+    &_inputs{
+        display: flex;
+        flex-direction: column;
+        padding: 0 30px;
+        font-size: 20px;
+        height: 100%;
+    }
+    &_singe_input{
+        margin-bottom: 20px;
+        color: var(--color-primary);
+    }
+    &_input_name{
+        padding: 0;
+        margin-bottom: 5px;
+    }
+    &_input_name_req{
+        padding: 0;
+        margin-bottom: 5px;
+    }
+    &_input_name_req::after{
+        content: '*';
+        color: $red;
+    }
+    &_input_field{
+        width: 250px;
+        height: 30px;
+        border-radius: 4px;
+        border: 1px solid var(--border-lite-color);
+        padding: 2px 5px;
+        font-size: 18px;
+        background-color: var(--background-lite-color);
+        color: var(--color-primary);
+    }
+    &_button_container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 30px 20px 30px;
+    }
+    &_cancel_button{
+        width: 80px;
+        height: 30px;
+        font-size: 20px;
+        padding: 3px 4px;
+        border: 1px solid var(--border-lite-color);
+        border-radius: 3px;
+        cursor: pointer;
+        color: $red;
+        background-color: var(--background-lite-color);
+    }
+    &_cancel_button:active{
+        border-color: $red;
+    }
+    &_save_button{
+        width: 80px;
+        height: 30px;
+        font-size: 20px;
+        padding: 3px 4px;
+        border: 1px solid var(--border-button-color);
+        border-radius: 3px;
+        cursor: pointer;
+        color: $light_blue;
+        background-color: var(--background-lite-color);
+    }
+    &_save_button:active{
+        border-color: $light_blue;
+    }
+    &_save_button:disabled{
+        background-color: var(--disable-save-button);
+        color: var(--border-disable-button);
+        border: 1px solid var(--border-lite-color);
+        cursor: default;
+    }
+}
+@media ($tablet_width) {
+    .modal_content{
+        width: 350px;
+        height: 500px;
+        border: 1px solid $black;
+        z-index: 110;
+        display: flex;
+        flex-direction: column;
+        border-radius: 7px;
+        background-color: var(--background-surface);
     }
 }

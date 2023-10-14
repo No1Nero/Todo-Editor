@@ -11,14 +11,15 @@
     transform: rotate(-25deg);
     color: $red;
     font-weight: 700;
-}
-.expired_mark_container::before{
-    display: block;
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
+
+    &::before{
+        display: block;
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+    }
 }

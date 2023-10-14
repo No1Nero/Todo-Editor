@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import './Header.scss';
-import { ThemeContext } from '../../context/themeContext';
 import ReactSwitch from 'react-switch';
+import { ThemeContext } from '../../context/themeContext';
 import { ThemeConstants } from '../../constants/themeConstants';
+import './Header.scss';
 
 export default function Header() {
     const {theme, toggleTheme} = useContext(ThemeContext);

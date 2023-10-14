@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { TodoActionTypes } from '../../store/todoTypes';
 import { StatusFilterConstants } from '../../constants/statusFilterConstants';
-import './FilterMenu.scss';
 import FilterButton from '../FilterButton/FilterButton';
+import './FilterMenu.scss';
 
 export default function FilterMenu() {
     const dispatch = useDispatch();

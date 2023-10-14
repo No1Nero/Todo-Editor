@@ -1,19 +1,19 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import './Modal.scss';
+import uuid from 'react-uuid';
+import { useDispatch } from 'react-redux';
+import DatePicker from 'react-datepicker';
 import { ITodo } from '../../models/ITodo';
 import { formatDateFromISO } from '../../utils/formatDateFromISO';
 import { formatInputText } from '../../utils/formatInputText';
-import uuid from 'react-uuid';
-import { useDispatch } from 'react-redux';
 import { TodoActionTypes } from '../../store/todoTypes';
 import { validateSaveButton } from '../../utils/validateSaveButton';
-import DatePicker from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css";
 import { getMaxDate, getMinDate } from '../../utils/timeFormats';
 import { useTypedSelector } from '../../store/useTypedSelector';
 import { StatusFilterConstants } from '../../constants/statusFilterConstants';
 import { maxExpirationDate, maxInputLength } from '../../constants/inputConstants';
 import { fiveMins } from '../../constants/timeConstants';
+import "react-datepicker/dist/react-datepicker.css";
+import './Modal.scss';
 
 interface ModalProps {
     createInputText?: string,

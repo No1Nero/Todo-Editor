@@ -1,0 +1,34 @@
+@import '../styles/variables';
+
+@mixin light-theme {
+    --color-primary: #{$black};
+    --color-secondary: #{$light_blue};
+    --border-lite-color: #{$black};
+    --background-lite-color: #{$white};
+    --contrast-background-color: #{$white};
+    --secondary-background: #{$lite_gray};
+    --header-background: #{$light_blue};
+    --background-surface: #{$white};
+    --border-button-color: #{$light_blue};
+    --disable-save-button: #{$gray};
+    --border-disable-button: #{$black};
+    --surface-color: #{$black};
+    --lite-background-color: #{$lite_gray};
+    --lite-dark-background-color: #{$lite_gray};
+}
+@mixin dark-theme {
+    --color-primary: #{$white};
+    --color-secondary: #{$gray};
+    --border-lite-color: #{$dark_lite_overlay};
+    --background-lite-color: #{$dark_lite_overlay};
+    --contrast-background-color: #{$dark_bg};
+    --secondary-background: #{$dark_overlay};
+    --header-background: #{$dark_header};
+    --background-surface: #{$dark_surface};
+    --border-button-color: #{$dark_lite_overlay};
+    --disable-save-button: #{$dark_surface};
+    --border-disable-button: #{$gray};
+    --surface-color: #{$dark_surface};
+    --lite-background-color: #{$dark_surface};
+    --lite-dark-background-color: #{$dark_bg};
+}
